@@ -6,6 +6,15 @@ import { Role } from '@prisma/client';
 export class UsersService {
   constructor(private prisma: PrismaService) {}
 
+  private users = [
+    { id: 1, email: 'user1@example.com' },
+    { id: 2, email: 'user2@example.com' },
+  ];
+
+  findAll() {
+    return this.users;
+  }
+
   async findByEmail(email: string) {
     return this.prisma.user.findUnique({ where: { email } });
   }
